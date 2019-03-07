@@ -23,13 +23,9 @@
   box-shadow: 0px 4px 20px 0px grey;
 }
 
-.log-out{
+.log-out {
   position: absolute;
   right: 1rem;
-}
-
-.app-main {
-  max-height: calc(100% - 7rem);
 }
 
 .login-form {
@@ -43,7 +39,8 @@
   align-items: center;
 }
 
-.login-form input, .log-out {
+.login-form input,
+.log-out {
   padding: 0 0.5rem;
   height: 2rem;
   border: none;
@@ -54,6 +51,11 @@
 .login-form input[type="text"] {
   margin-top: 1rem;
   align-self: stretch;
+}
+
+.login-incorrect-username {
+  color: red;
+  font-size: 12px;
 }
 
 .login-form input[type="submit"] {
@@ -75,9 +77,16 @@
 }
 
 .main__messages {
+  height: auto;
+  max-height: calc(100% - 7rem);
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+}
+
+.chat-page-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
@@ -95,7 +104,11 @@
   border-bottom: 1px solid black;
 }
 
-.new-message-container{
+.message__content {
+  word-break: break-all;
+}
+
+.new-message-container {
   align-self: flex-end;
   height: 3rem;
 }
