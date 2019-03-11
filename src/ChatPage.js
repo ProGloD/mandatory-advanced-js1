@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import Emojify from "react-emojione";
 
 import Message from "./Message";
 
@@ -10,10 +11,16 @@ class ChatPage extends Component {
     this.sendMessage = this.sendMessage.bind(this);
   }
 
-  sendMessage() {
+  sendMessage(e) {
+    e.preventDefault();
     const textField = document.querySelector("#new-message__content");
     this.props.sendmessage(textField.value);
     textField.value = "";
+  }
+
+  addEmoji(e) {
+    const textField = document.querySelector("#new-message__content");
+    textField.value += e.target.title;
   }
 
   render() {
@@ -28,15 +35,24 @@ class ChatPage extends Component {
         </div>
         <ScrollToBottom className="main__messages">
           {this.props.messages.map(obj => {
-            return <Message key={obj.id} message={obj} />;
+            return (
+              <Message
+                key={obj.id}
+                message={obj}
+                username={this.props.username}
+              />
+            );
           })}
         </ScrollToBottom>
-        <div className="new-message-container">
-          <textarea id="new-message__content" minLength={1} maxLength={200} />
-          <button className="new-message__send" onClick={this.sendMessage}>
-            Send
-          </button>
-        </div>
+        <form className="new-message-container" onSubmit={this.sendMessage}>
+          <input id="new-message__content" minLength={1} maxLength={200} />
+          <div className="emoji">
+            <Emojify style={{ height: 18, width: 18 }} onClick={this.addEmoji}>
+              :joy::heart::heart_eyes::thinking::fire::slight_smile::rofl::kissing_heart::hugging::cookie:
+            </Emojify>
+          </div>
+          <input type="submit" className="new-message__send" value="Send" />
+        </form>
       </div>
     );
   }

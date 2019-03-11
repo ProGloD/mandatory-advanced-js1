@@ -4,7 +4,7 @@ import Emojify from "react-emojione";
 
 class Message extends Component {
   convertTime(timeInMilliseconds) {
-    return new Date(timeInMilliseconds).toLocaleString();
+    return new Date(timeInMilliseconds).toLocaleString("SV-se");
   }
 
   checkContentForUrl() {}
@@ -13,10 +13,16 @@ class Message extends Component {
     const data = this.props.message;
 
     return (
-      <div className="message">
+      <div
+        className={
+          data.username === this.props.username
+            ? "message currentUser"
+            : "message"
+        }
+      >
         <h3 className="message__username">{data.username}</h3>
         <Linkify className="message__content">
-          <Emojify style={{height: 24, width: 24}}>{data.content}</Emojify>
+          <Emojify style={{ height: 24, width: 24 }}>{data.content}</Emojify>
         </Linkify>
         <p className="message__time">{this.convertTime(data.timestamp)}</p>
       </div>

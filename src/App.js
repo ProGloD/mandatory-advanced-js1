@@ -10,8 +10,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      signedin: true,
-      username: "Yaro",
+      signedin: false,
+      username: "",
       messages: []
     };
 

@@ -76,15 +76,17 @@
   background-color: rgb(89, 222, 255);
 }
 
-.main__messages {
-  height: auto;
-  max-height: calc(100% - 7rem);
+.chat-page-container {
   display: flex;
   flex-direction: column;
+}
+
+.main__messages {
+  height: calc(100% - 7rem);
   padding: 0.5rem;
 }
 
-.chat-page-container {
+.main__messages > div {
   display: flex;
   flex-direction: column;
 }
@@ -93,6 +95,7 @@
   align-self: flex-start;
   margin-left: 1rem;
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding: 0.5rem;
   max-width: 25%;
   border-radius: 0 1rem 1rem 1rem;
@@ -100,15 +103,34 @@
   box-shadow: 0px 4px 10px 0px grey;
 }
 
+.currentUser {
+  align-self: flex-end;
+  margin-right: 1rem;
+  border-radius: 1rem 1rem 0 1rem;
+  background-color: rgb(255, 255, 255);
+}
+
 .message__username {
   border-bottom: 1px solid black;
+  margin-bottom: 0.5rem;
 }
 
 .message__content {
   word-break: break-all;
 }
 
+.message__time {
+  text-align: end;
+  font-size: 10px;
+}
+
 .new-message-container {
   align-self: flex-end;
+  padding-right: 0.5rem;
   height: 3rem;
+}
+
+.emoji {
+  display: inline-block;
+  width: 114px;
 }

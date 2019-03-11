@@ -14,7 +14,7 @@ class LoginPage extends Component {
   logIn(e) {
     e.preventDefault();
 
-    const regex = /^[\w-]+$/;
+    const regex = /^[\s\wÅÄÖåäö-]{1,12}$/;
     const username = document.querySelector("#username").value;
 
     //check username
@@ -43,15 +43,13 @@ class LoginPage extends Component {
               id="username"
               type="text"
               required="required"
-              minLength={1}
-              maxLength={12}
               placeholder="Username..."
             />
 
             {//if username isn't in correct format, than display alert message
             !this.state.correctUsername ? (
               <p className="login-incorrect-username">
-                Username can contain only letters, numbers and symbols('-' '_')
+                Username must be between 1 to 12 characters and can contain only letters, numbers, spaces and symbols('-' '_')
               </p>
             ) : null}
 
